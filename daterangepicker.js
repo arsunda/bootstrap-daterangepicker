@@ -344,13 +344,13 @@
 
             var list = '<ul>';
             var options = '<select class="rangesSelect" id="rangesSelect">';
+            options += '<option value="">Choose an option</option>';
             for (range in this.ranges) {
                 list += '<li data-range-key="' + range + '">' + range + '</li>';
                 options += '<option value="' + range  + '">' + range + '</option>';
             }
             if (this.showCustomRangeLabel) {
                 list += '<li data-range-key="' + this.locale.customRangeLabel + '">' + this.locale.customRangeLabel + '</li>';
-                options += '<option value="' + this.locale.customRangeLabel  + '">' + this.locale.customRangeLabel + '</option>';
             }
 
             options += '</select>';
