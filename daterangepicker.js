@@ -3,14 +3,13 @@
 * @author: Dan Grossman http://www.dangrossman.info/
 * @copyright: Copyright (c) 2012-2017 Dan Grossman. All rights reserved.
 * @license: Licensed under the MIT license. See http://www.opensource.org/licenses/mit-license.php
-* @website: http://www.daterangepicker.com/
+* @website: https://www.daterangepicker.com/
 */
 // Follow the UMD template https://github.com/umdjs/umd/blob/master/templates/returnExportsGlobal.js
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Make globaly available as well
         define(['moment', 'jquery'], function (moment, jquery) {
-            if (!jquery.fn) jquery.fn = {}; // webpack server rendering
             return (root.daterangepicker = factory(moment, jquery));
         });
     } else if (typeof module === 'object' && module.exports) {
@@ -21,8 +20,7 @@
             jQuery = require('jquery');
             if (!jQuery.fn) jQuery.fn = {};
         }
-        var moment = (typeof window != 'undefined' && typeof window.moment != 'undefined') ? window.moment : require('moment');
-        module.exports = factory(moment, jQuery);
+        module.exports = factory(require('moment'), jQuery);
     } else {
         // Browser globals
         root.daterangepicker = factory(root.moment, root.jQuery);
@@ -345,14 +343,20 @@
             }
 
             var list = '<ul>';
+            var options = '<select class="rangesSelect" id="rangesSelect">';
             for (range in this.ranges) {
                 list += '<li data-range-key="' + range + '">' + range + '</li>';
+                options += '<option value="' + range  + '">' + range + '</option>';
             }
             if (this.showCustomRangeLabel) {
                 list += '<li data-range-key="' + this.locale.customRangeLabel + '">' + this.locale.customRangeLabel + '</li>';
+                options += '<option value="' + this.locale.customRangeLabel  + '">' + this.locale.customRangeLabel + '</option>';
             }
+
+            options += '</select>';
             list += '</ul>';
             this.container.find('.ranges').prepend(list);
+            this.container.find('.ranges').prepend(options);
         }
 
         if (typeof cb === 'function') {
@@ -426,9 +430,10 @@
             .on('blur.daterangepicker', '.daterangepicker_input input', $.proxy(this.formInputsBlurred, this))
             .on('change.daterangepicker', '.daterangepicker_input input', $.proxy(this.formInputsChanged, this));
 
-        this.container.find('.ranges')
+        this.container.find('.range_inputs')
             .on('click.daterangepicker', 'button.applyBtn', $.proxy(this.clickApply, this))
-            .on('click.daterangepicker', 'button.cancelBtn', $.proxy(this.clickCancel, this))
+            .on('click.daterangepicker', 'button.cancelBtn', $.proxy(this.clickCancel, this));
+        this.container.find('.ranges')
             .on('click.daterangepicker', 'li', $.proxy(this.clickRange, this))
             .on('mouseenter.daterangepicker', 'li', $.proxy(this.hoverRange, this))
             .on('mouseleave.daterangepicker', 'li', $.proxy(this.updateFormInputs, this));
