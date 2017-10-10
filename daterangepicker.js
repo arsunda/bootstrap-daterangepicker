@@ -369,7 +369,7 @@
             this.container.find('.ranges').prepend(list);
             this.container.find('.ranges').prepend(dropdown_option);
             $('.rangesSelect').change(() => {
-                const selectedRange = (document.getElementById('rangesSelect')).value;
+                var selectedRange = (document.getElementById('rangesSelect')).value;
                 $('.ranges li[data-range-key="' + selectedRange + '"]').trigger('click');
             });
         }
