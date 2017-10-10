@@ -354,20 +354,20 @@
             }
 
             var list = '<ul>';
-            var options = '<select class="rangesSelect" id="rangesSelect">';
-            options += '<option value="">Choose an option</option>';
+            var dropdown_option = '<select class="rangesSelect" id="rangesSelect">';
+            dropdown_option += '<option value="">Choose an option</option>';
             for (range in this.ranges) {
                 list += '<li data-range-key="' + range + '">' + range + '</li>';
-                options += '<option value="' + range  + '">' + range + '</option>';
+                dropdown_option += '<option value="' + range  + '">' + range + '</option>';
             }
             if (this.showCustomRangeLabel) {
                 list += '<li data-range-key="' + this.locale.customRangeLabel + '">' + this.locale.customRangeLabel + '</li>';
             }
 
-            options += '</select>';
+            dropdown_option += '</select>';
             list += '</ul>';
             this.container.find('.ranges').prepend(list);
-            this.container.find('.ranges').prepend(options);
+            this.container.find('.ranges').prepend(dropdown_option);
             $('.rangesSelect').change(() => {
                 const selectedRange = (document.getElementById('rangesSelect')).value;
                 $('.ranges li[data-range-key="' + selectedRange + '"]').trigger('click');
