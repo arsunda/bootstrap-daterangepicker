@@ -1,6 +1,7 @@
 # Date Range Picker for Bootstrap
 
 Forked by Arulnithi Sundaramoorthy
+Version 2 (with timezone inlcuded)
 
 ![Improvely.com](http://i.imgur.com/LbAMf3D.png)
 
