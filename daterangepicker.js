@@ -73,6 +73,7 @@
             separator: ' - ',
             applyLabel: 'Apply',
             cancelLabel: 'Cancel',
+            optionLabel: 'Choose an Option',
             weekLabel: 'W',
             customRangeLabel: 'Custom Range',
             daysOfWeek: moment.weekdaysMin(),
@@ -355,7 +356,7 @@
 
             var list = '<ul>';
             var dropdown_option = '<select class="rangesSelect" id="rangesSelect">';
-            dropdown_option += '<option value="">Choose an option</option>';
+            dropdown_option += '<option value="">'+ this.locale.optionLabel +'</option>';
             for (range in this.ranges) {
                 list += '<li data-range-key="' + range + '">' + range + '</li>';
                 dropdown_option += '<option value="' + range  + '">' + range + '</option>';
