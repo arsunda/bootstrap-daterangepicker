@@ -356,10 +356,10 @@
 
             var list = '<ul>';
             var dropdown_option = '<select label="Select time range" class="rangesSelect" id="rangesSelect">';
-            dropdown_option += '<option value="">'+ this.locale.optionLabel +'</option>';
+            dropdown_option += '<option label="' + this.locale.optionLabel + '" value="">'+ this.locale.optionLabel +'</option>';
             for (range in this.ranges) {
                 list += '<li data-range-key="' + range + '">' + range + '</li>';
-                dropdown_option += '<option value="' + range  + '">' + range + '</option>';
+                dropdown_option += '<option label="' + range + '" value="' + range  + '">' + range + '</option>';
             }
             if (this.showCustomRangeLabel) {
                 list += '<li data-range-key="' + this.locale.customRangeLabel + '">' + this.locale.customRangeLabel + '</li>';
@@ -748,11 +748,11 @@
                 var monthHtml = '<select label="Select month" class="monthselect">';
                 for (var m = 0; m < 12; m++) {
                     if ((!inMinYear || m >= minDate.month()) && (!inMaxYear || m <= maxDate.month())) {
-                        monthHtml += "<option value='" + m + "'" +
+                        monthHtml += "<option label=\"" + m + "\" value='" + m + "'" +
                             (m === currentMonth ? " selected='selected'" : "") +
                             ">" + this.locale.monthNames[m] + "</option>";
                     } else {
-                        monthHtml += "<option value='" + m + "'" +
+                        monthHtml += "<option label=\"" + m + "\" value='" + m + "'" +
                             (m === currentMonth ? " selected='selected'" : "") +
                             " disabled='disabled'>" + this.locale.monthNames[m] + "</option>";
                     }
@@ -761,7 +761,7 @@
 
                 var yearHtml = '<select label="Select year" class="yearselect">';
                 for (var y = minYear; y <= maxYear; y++) {
-                    yearHtml += '<option value="' + y + '"' +
+                    yearHtml += '<option label="' + y + '" value="' + y + '"' +
                         (y === currentYear ? ' selected="selected"' : '') +
                         '>' + y + '</option>';
                 }
@@ -947,11 +947,11 @@
                     disabled = true;
 
                 if (i_in_24 == selected.hour() && !disabled) {
-                    html += '<option value="' + i + '" selected="selected">' + i + '</option>';
+                    html += '<option label="' + i + '" value="' + i + '" selected="selected">' + i + '</option>';
                 } else if (disabled) {
-                    html += '<option value="' + i + '" disabled="disabled" class="disabled">' + i + '</option>';
+                    html += '<option label="' + i + '" value="' + i + '" disabled="disabled" class="disabled">' + i + '</option>';
                 } else {
-                    html += '<option value="' + i + '">' + i + '</option>';
+                    html += '<option label="' + i + '" value="' + i + '">' + i + '</option>';
                 }
             }
 
@@ -974,11 +974,11 @@
                     disabled = true;
 
                 if (selected.minute() == i && !disabled) {
-                    html += '<option value="' + i + '" selected="selected">' + padded + '</option>';
+                    html += '<option label="' + i + '" value="' + i + '" selected="selected">' + padded + '</option>';
                 } else if (disabled) {
-                    html += '<option value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
+                    html += '<option label="' + i + '" value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                 } else {
-                    html += '<option value="' + i + '">' + padded + '</option>';
+                    html += '<option label="' + i + '" value="' + i + '">' + padded + '</option>';
                 }
             }
 
@@ -1002,11 +1002,11 @@
                         disabled = true;
 
                     if (selected.second() == i && !disabled) {
-                        html += '<option value="' + i + '" selected="selected">' + padded + '</option>';
+                        html += '<option label="' + i + '" value="' + i + '" selected="selected">' + padded + '</option>';
                     } else if (disabled) {
-                        html += '<option value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
+                        html += '<option label="' + i + '" value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                     } else {
-                        html += '<option value="' + i + '">' + padded + '</option>';
+                        html += '<option label="' + i + '" value="' + i + '">' + padded + '</option>';
                     }
                 }
 
@@ -1030,9 +1030,9 @@
                     pm_html = ' disabled="disabled" class="disabled"';
 
                 if (selected.hour() >= 12) {
-                    html += '<option value="AM"' + am_html + '>AM</option><option value="PM" selected="selected"' + pm_html + '>PM</option>';
+                    html += '<option label="AM" value="AM"' + am_html + '>AM</option><option label="PM" value="PM" selected="selected"' + pm_html + '>PM</option>';
                 } else {
-                    html += '<option value="AM" selected="selected"' + am_html + '>AM</option><option value="PM"' + pm_html + '>PM</option>';
+                    html += '<option label="AM" value="AM" selected="selected"' + am_html + '>AM</option><option label="PM" value="PM"' + pm_html + '>PM</option>';
                 }
 
                 html += '</select>';
