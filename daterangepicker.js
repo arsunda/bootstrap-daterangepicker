@@ -355,7 +355,7 @@
             }
 
             var list = '<ul>';
-            var dropdown_option = '<select class="rangesSelect" id="rangesSelect">';
+            var dropdown_option = '<select label="Select time range" class="rangesSelect" id="rangesSelect">';
             dropdown_option += '<option value="">'+ this.locale.optionLabel +'</option>';
             for (range in this.ranges) {
                 list += '<li data-range-key="' + range + '">' + range + '</li>';
@@ -745,7 +745,7 @@
                 var inMinYear = currentYear == minYear;
                 var inMaxYear = currentYear == maxYear;
 
-                var monthHtml = '<select class="monthselect">';
+                var monthHtml = '<select label="Select month" class="monthselect">';
                 for (var m = 0; m < 12; m++) {
                     if ((!inMinYear || m >= minDate.month()) && (!inMaxYear || m <= maxDate.month())) {
                         monthHtml += "<option value='" + m + "'" +
@@ -759,7 +759,7 @@
                 }
                 monthHtml += "</select>";
 
-                var yearHtml = '<select class="yearselect">';
+                var yearHtml = '<select label="Select year" class="yearselect">';
                 for (var y = minYear; y <= maxYear; y++) {
                     yearHtml += '<option value="' + y + '"' +
                         (y === currentYear ? ' selected="selected"' : '') +
@@ -929,7 +929,7 @@
             // hours
             //
 
-            html = '<select class="hourselect">';
+            html = '<select label="Select hour" class="hourselect">';
 
             var start = this.timePicker24Hour ? 0 : 1;
             var end = this.timePicker24Hour ? 23 : 12;
@@ -961,7 +961,7 @@
             // minutes
             //
 
-            html += ': <select class="minuteselect">';
+            html += ': <select label="Select minutes" class="minuteselect">';
 
             for (var i = 0; i < 60; i += this.timePickerIncrement) {
                 var padded = i < 10 ? '0' + i : i;
@@ -989,7 +989,7 @@
             //
 
             if (this.timePickerSeconds) {
-                html += ': <select class="secondselect">';
+                html += ': <select label="Select seconds" class="secondselect">';
 
                 for (var i = 0; i < 60; i++) {
                     var padded = i < 10 ? '0' + i : i;
@@ -1018,7 +1018,7 @@
             //
 
             if (!this.timePicker24Hour) {
-                html += '<select class="ampmselect">';
+                html += '<select label="Select AM or PM" class="ampmselect">';
 
                 var am_html = '';
                 var pm_html = '';
