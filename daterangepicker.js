@@ -748,11 +748,11 @@
                 var monthHtml = '<select label="Select month" class="monthselect">';
                 for (var m = 0; m < 12; m++) {
                     if ((!inMinYear || m >= minDate.month()) && (!inMaxYear || m <= maxDate.month())) {
-                        monthHtml += "<option label='" + m + "' value='" + m + "'" +
+                        monthHtml += "<option label='" + this.locale.monthNames[m] + "' value='" + m + "'" +
                             (m === currentMonth ? " selected='selected'" : "") +
                             ">" + this.locale.monthNames[m] + "</option>";
                     } else {
-                        monthHtml += "<option label='" + m + "' value='" + m + "'" +
+                        monthHtml += "<option label='" + this.locale.monthNames[m] + "' value='" + m + "'" +
                             (m === currentMonth ? " selected='selected'" : "") +
                             " disabled='disabled'>" + this.locale.monthNames[m] + "</option>";
                     }
@@ -929,7 +929,7 @@
             // hours
             //
 
-            html = '<select label="Select hour" class="hourselect">';
+            html = '<select aria-label="Select hour" class="hourselect">';
 
             var start = this.timePicker24Hour ? 0 : 1;
             var end = this.timePicker24Hour ? 23 : 12;
@@ -947,11 +947,11 @@
                     disabled = true;
 
                 if (i_in_24 == selected.hour() && !disabled) {
-                    html += '<option label="' + i + '" value="' + i + '" selected="selected">' + i + '</option>';
+                    html += '<option aria-label="' + i + '" value="' + i + '" selected="selected">' + i + '</option>';
                 } else if (disabled) {
-                    html += '<option label="' + i + '" value="' + i + '" disabled="disabled" class="disabled">' + i + '</option>';
+                    html += '<option aria-label="' + i + '" value="' + i + '" disabled="disabled" class="disabled">' + i + '</option>';
                 } else {
-                    html += '<option label="' + i + '" value="' + i + '">' + i + '</option>';
+                    html += '<option aria-label="' + i + '" value="' + i + '">' + i + '</option>';
                 }
             }
 
@@ -961,7 +961,7 @@
             // minutes
             //
 
-            html += ': <select label="Select minutes" class="minuteselect">';
+            html += ': <select aria-label="Select minutes" class="minuteselect">';
 
             for (var i = 0; i < 60; i += this.timePickerIncrement) {
                 var padded = i < 10 ? '0' + i : i;
@@ -974,11 +974,11 @@
                     disabled = true;
 
                 if (selected.minute() == i && !disabled) {
-                    html += '<option label="' + i + '" value="' + i + '" selected="selected">' + padded + '</option>';
+                    html += '<option aria-label="' + padded + '" value="' + i + '" selected="selected">' + padded + '</option>';
                 } else if (disabled) {
-                    html += '<option label="' + i + '" value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
+                    html += '<option aria-label="' + padded + '" value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                 } else {
-                    html += '<option label="' + i + '" value="' + i + '">' + padded + '</option>';
+                    html += '<option aria-label="' + padded + '" value="' + i + '">' + padded + '</option>';
                 }
             }
 
@@ -989,7 +989,7 @@
             //
 
             if (this.timePickerSeconds) {
-                html += ': <select label="Select seconds" class="secondselect">';
+                html += ': <select aria-label="Select seconds" class="secondselect">';
 
                 for (var i = 0; i < 60; i++) {
                     var padded = i < 10 ? '0' + i : i;
@@ -1002,11 +1002,11 @@
                         disabled = true;
 
                     if (selected.second() == i && !disabled) {
-                        html += '<option label="' + i + '" value="' + i + '" selected="selected">' + padded + '</option>';
+                        html += '<option aria-label="' + padded + '" value="' + i + '" selected="selected">' + padded + '</option>';
                     } else if (disabled) {
-                        html += '<option label="' + i + '" value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
+                        html += '<option aria-label="' + padded + '" value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                     } else {
-                        html += '<option label="' + i + '" value="' + i + '">' + padded + '</option>';
+                        html += '<option aria-label="' + padded + '" value="' + i + '">' + padded + '</option>';
                     }
                 }
 
@@ -1018,7 +1018,7 @@
             //
 
             if (!this.timePicker24Hour) {
-                html += '<select label="Select AM or PM" class="ampmselect">';
+                html += '<select aria-label="Select AM or PM" class="ampmselect">';
 
                 var am_html = '';
                 var pm_html = '';
@@ -1030,9 +1030,9 @@
                     pm_html = ' disabled="disabled" class="disabled"';
 
                 if (selected.hour() >= 12) {
-                    html += '<option label="AM" value="AM"' + am_html + '>AM</option><option label="PM" value="PM" selected="selected"' + pm_html + '>PM</option>';
+                    html += '<option aria-label="AM" value="AM"' + am_html + '>AM</option><option aria-label="PM" value="PM" selected="selected"' + pm_html + '>PM</option>';
                 } else {
-                    html += '<option label="AM" value="AM" selected="selected"' + am_html + '>AM</option><option label="PM" value="PM"' + pm_html + '>PM</option>';
+                    html += '<option aria-label="AM" value="AM" selected="selected"' + am_html + '>AM</option><option aria-label="PM" value="PM"' + pm_html + '>PM</option>';
                 }
 
                 html += '</select>';
