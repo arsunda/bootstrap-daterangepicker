@@ -748,11 +748,11 @@
                 var monthHtml = '<select label="Select month" class="monthselect">';
                 for (var m = 0; m < 12; m++) {
                     if ((!inMinYear || m >= minDate.month()) && (!inMaxYear || m <= maxDate.month())) {
-                        monthHtml += "<option label='" + m + "' value='" + m + "'" +
+                        monthHtml += "<option label='" + this.locale.monthNames[m] + "' value='" + m + "'" +
                             (m === currentMonth ? " selected='selected'" : "") +
                             ">" + this.locale.monthNames[m] + "</option>";
                     } else {
-                        monthHtml += "<option label='" + m + "' value='" + m + "'" +
+                        monthHtml += "<option label='" + this.locale.monthNames[m] + "' value='" + m + "'" +
                             (m === currentMonth ? " selected='selected'" : "") +
                             " disabled='disabled'>" + this.locale.monthNames[m] + "</option>";
                     }
@@ -974,11 +974,11 @@
                     disabled = true;
 
                 if (selected.minute() == i && !disabled) {
-                    html += '<option aria-label="' + i + '" value="' + i + '" selected="selected">' + padded + '</option>';
+                    html += '<option aria-label="' + padded + '" value="' + i + '" selected="selected">' + padded + '</option>';
                 } else if (disabled) {
-                    html += '<option aria-label="' + i + '" value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
+                    html += '<option aria-label="' + padded + '" value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                 } else {
-                    html += '<option aria-label="' + i + '" value="' + i + '">' + padded + '</option>';
+                    html += '<option aria-label="' + padded + '" value="' + i + '">' + padded + '</option>';
                 }
             }
 
@@ -1002,11 +1002,11 @@
                         disabled = true;
 
                     if (selected.second() == i && !disabled) {
-                        html += '<option aria-label="' + i + '" value="' + i + '" selected="selected">' + padded + '</option>';
+                        html += '<option aria-label="' + padded + '" value="' + i + '" selected="selected">' + padded + '</option>';
                     } else if (disabled) {
-                        html += '<option aria-label="' + i + '" value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
+                        html += '<option aria-label="' + padded + '" value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                     } else {
-                        html += '<option aria-label="' + i + '" value="' + i + '">' + padded + '</option>';
+                        html += '<option aria-label="' + padded + '" value="' + i + '">' + padded + '</option>';
                     }
                 }
 
